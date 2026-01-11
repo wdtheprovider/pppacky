@@ -1,9 +1,11 @@
 import Image from "next/image";
 
 import Link from "next/link";
-import { policies } from "@/data/policies";
+import { getAllPolicies } from "@/lib/policies";
 
 export default function Home() {
+  const policies = getAllPolicies();
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 p-6 dark:bg-black">
       <main className="flex w-full max-w-2xl flex-col items-center justify-center p-8 bg-white rounded-xl shadow-lg dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
@@ -16,10 +18,10 @@ export default function Home() {
         </p>
 
         <div className="grid w-full gap-4">
-          {Object.entries(policies).map(([slug, policy]) => (
+          {policies.map((policy) => (
             <Link
-              key={slug}
-              href={`/${slug}`}
+              key={policy.slug}
+              href={`/${policy.slug}`}
               className="group flex items-center justify-between p-4 rounded-lg border border-zinc-200 hover:border-zinc-400 hover:shadow-md transition-all dark:border-zinc-700 dark:hover:border-zinc-500 bg-zinc-50 dark:bg-zinc-800/50"
             >
               <div className="flex flex-col">

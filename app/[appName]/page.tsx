@@ -1,4 +1,4 @@
-import { policies } from "@/data/policies";
+import { getPolicy, getAllPolicies } from "@/lib/policies";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -7,7 +7,7 @@ interface PageProps {
 
 export default async function PolicyPage({ params }: PageProps) {
     const { appName } = await params;
-    const policy = policies[appName];
+    const policy = await getPolicy(appName);
 
     if (!policy) {
         notFound();
@@ -32,7 +32,8 @@ export default async function PolicyPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-    return Object.keys(policies).map((appName) => ({
-        appName,
+    const policies = getAllPolicies();
+    return policies.map((policy) => ({
+        appName: policy.slug,
     }));
 }
