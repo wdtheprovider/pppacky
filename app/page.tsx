@@ -47,7 +47,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12 text-sm text-zinc-400 dark:text-zinc-600">
-          托管 by PrivacyPolicyPacky
+          PPPacky by Dingaan Letjane
         </div>
       </main>
     </div>
