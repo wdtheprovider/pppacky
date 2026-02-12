@@ -1,6 +1,7 @@
 import { getPage, getAllPages } from "@/lib/pages";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Header from "@/components/Header";
 
 export async function generateStaticParams() {
   const pages = getAllPages();
@@ -22,8 +23,9 @@ export default async function Page({
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 p-6 dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-col items-start p-8 bg-white rounded-xl shadow-lg dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+    <div className="flex min-h-screen flex-col items-center bg-zinc-50 dark:bg-black">
+      <Header />
+      <main className="flex w-full mt-8 max-w-3xl flex-col items-start p-8 bg-white rounded-xl shadow-lg dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
         <div className="w-full mb-6">
           <Link
             href="/pages"
